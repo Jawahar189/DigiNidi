@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DigiNidi - Digital Financial Services</title>
+  <title>DigiNidi Services Pvt Ltd</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -74,33 +74,84 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-decoration: none;
       color: var(--ink);
+      min-width: 0;
+      padding: 8px 14px 8px 8px;
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 247, 255, 0.9));
+      border: 1px solid rgba(179, 207, 255, 0.9);
+      box-shadow:
+        0 18px 34px rgba(10, 49, 122, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+
+    .brand-logo-shell {
+      position: relative;
+      padding: 6px 8px;
+      border-radius: 18px;
+      background:
+        linear-gradient(145deg, rgba(227, 240, 255, 0.95), rgba(255, 255, 255, 0.98));
+      border: 1px solid rgba(180, 212, 255, 0.92);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.82),
+        0 12px 28px rgba(6, 45, 121, 0.12);
+      flex-shrink: 0;
+    }
+
+    .brand-logo-shell::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), transparent 58%);
+      pointer-events: none;
     }
 
     .brand-logo {
-      width: 58px;
-      height: 58px;
-      border-radius: 14px;
-      object-fit: cover;
-      box-shadow: 0 10px 22px rgba(10, 87, 212, 0.28);
-      border: 1px solid rgba(14, 26, 52, 0.08);
-      background: #fff;
+      width: clamp(176px, 20vw, 250px);
+      height: auto;
+      max-height: 78px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 10px 18px rgba(10, 87, 212, 0.18));
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+      padding-right: 4px;
     }
 
     .brand-title {
       font-family: "Outfit", sans-serif;
-      font-size: 1.4rem;
+      font-size: clamp(1.2rem, 1.9vw, 1.72rem);
       font-weight: 800;
-      letter-spacing: 0.2px;
+      letter-spacing: 0.02em;
+      line-height: 1.02;
+      color: #0a4fc7;
+      text-shadow: 0 8px 24px rgba(10, 87, 212, 0.08);
     }
 
-    .brand-title span {
-      background: linear-gradient(120deg, var(--brand-1), var(--brand-2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .brand-title .services-word {
+      color: #d79a12;
+      text-shadow: 0 8px 20px rgba(215, 154, 18, 0.2);
+    }
+
+    .brand-subtitle {
+      font-size: 0.77rem;
+      font-weight: 700;
+      color: #5a6c88;
+      letter-spacing: 0.14em;
+      line-height: 1.2;
+      text-transform: uppercase;
     }
 
     .nav-links {
@@ -403,6 +454,13 @@
       gap: 18px;
     }
 
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
     .panel {
       background: var(--surface);
       border: 1px solid var(--ring);
@@ -419,6 +477,22 @@
     .panel p {
       color: var(--muted);
       margin-bottom: 8px;
+    }
+
+    .split-head {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-items: baseline;
+    }
+
+    .split-head span {
+      color: var(--brand-1);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
     }
 
     .clear-list {
@@ -499,7 +573,8 @@
     @media (max-width: 980px) {
       .hero-wrap,
       .services-grid,
-      .contact-grid {
+      .contact-grid,
+      .info-grid {
         grid-template-columns: 1fr;
       }
 
@@ -529,6 +604,49 @@
       .nav-links.open {
         display: flex;
       }
+
+      .brand {
+        gap: 12px;
+        padding: 8px 10px 8px 8px;
+        border-radius: 20px;
+      }
+
+      .brand-logo-shell {
+        padding: 6px 8px;
+        border-radius: 16px;
+      }
+
+      .brand-logo {
+        width: clamp(148px, 36vw, 190px);
+        max-height: 62px;
+      }
+
+      .brand-title {
+        font-size: 1.08rem;
+      }
+
+      .brand-subtitle {
+        font-size: 0.68rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        min-height: 72px;
+      }
+
+      .brand-copy {
+        display: none;
+      }
+
+      .brand-logo-shell {
+        padding: 6px 8px;
+      }
+
+      .brand-logo {
+        width: clamp(158px, 48vw, 198px);
+        max-height: 60px;
+      }
     }
   </style>
 </head>
@@ -536,8 +654,13 @@
   <header class="header">
     <div class="container nav">
       <a class="brand" href="#home" aria-label="DigiNidi Home">
-        <img class="brand-logo" src="logo.png" alt="DigiNidi logo" />
-        <div class="brand-title">Digi<span>Nidi</span></div>
+        <div class="brand-logo-shell">
+          <img class="brand-logo" src="latest_logo.png" alt="DigiNidi logo" />
+        </div>
+        <div class="brand-copy">
+          <div class="brand-title">DigiNidi <span class="services-word">Services</span></div>
+          <div class="brand-subtitle">Private Limited</div>
+        </div>
       </a>
 
       <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">&#9776;</button>
@@ -545,9 +668,9 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#partner">Partner</a></li>
+        <li><a href="#partner">Join With Us</a></li>
         <li><a href="#compliance">Compliance</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Contact Us</a></li>
       </ul>
     </div>
   </header>
@@ -556,26 +679,26 @@
     <section id="home" class="hero">
       <div class="container hero-wrap">
         <div class="reveal">
-          <div class="hero-tag">Digital Services Platform for Everyday Financial Needs</div>
-          <h1>Beautiful, Clear, and Trusted Service Experience from DigiNidi</h1>
+          <div class="hero-tag">Digital Payment and Banking Services</div>
+          <h1>Your Trusted Partner for Digital Payment and Banking Services</h1>
           <p class="lead">
-            DigiNidi delivers assisted financial and government services through one platform, making transactions fast, secure, and easy for every customer.
+            DigiNidi empowers retailers and entrepreneurs to offer essential digital financial services such as AEPS cash withdrawal, domestic money transfer, bill payments, and mobile recharge through a secure and reliable platform.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#services">View All Services</a>
-            <a class="btn btn-secondary" href="#contact">Start with DigiNidi</a>
+            <a class="btn btn-primary" href="#partner">Become a Retailer</a>
+            <a class="btn btn-secondary" href="#services">Explore Services</a>
           </div>
         </div>
 
         <aside class="hero-panel reveal delay-1">
-          <h3>What Customers Get</h3>
+          <h3>Core Service Highlights</h3>
           <div class="quick-grid">
-            <div class="quick-item">AEPS Banking Access</div>
-            <div class="quick-item">Domestic Transfers</div>
+            <div class="quick-item">AEPS Cash Withdrawal</div>
+            <div class="quick-item">Domestic Money Transfer</div>
             <div class="quick-item">BBPS Bill Payment</div>
-            <div class="quick-item">Recharge Services</div>
-            <div class="quick-item">PAN and Insurance</div>
-            <div class="quick-item">Loans and Demat</div>
+            <div class="quick-item">Cash Management System</div>
+            <div class="quick-item">Insurance Services</div>
+            <div class="quick-item">Government Services</div>
           </div>
         </aside>
       </div>
@@ -583,24 +706,46 @@
 
     <section id="about">
       <div class="container">
-        <h2 class="section-title reveal">About DigiNidi</h2>
+        <h2 class="section-title reveal">About Us</h2>
         <p class="section-sub reveal delay-1">
-          DigiNidi helps customers access digital financial services in a simple way, with reliable support for banking transactions, bill payments, identity-linked services, and more.
+          DigiNidi Services Pvt Ltd is a next-generation fintech ecosystem company focused on delivering integrated financial services to underserved and rural markets.
         </p>
+        <p class="section-sub reveal delay-2">
+          We operate through a structured franchise model, enabling retailers and entrepreneurs to offer secure financial services under a trusted brand.
+        </p>
+        <div class="info-grid">
+          <div class="panel reveal">
+            <div class="split-head">
+              <span>Our Vision</span>
+            </div>
+            <p>To become a leading regional fintech infrastructure network connecting millions to digital financial access.</p>
+          </div>
+          <div class="panel reveal delay-1">
+            <div class="split-head">
+              <span>Our Mission</span>
+            </div>
+            <ul class="clear-list">
+              <li>Expand rural banking access</li>
+              <li>Promote digital financial inclusion</li>
+              <li>Enable entrepreneurship through fintech distribution</li>
+              <li>Provide secure and compliant transaction systems</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="services">
       <div class="container">
-        <h2 class="section-title reveal">Services Offered by DigiNidi</h2>
+        <h2 class="section-title reveal">What We Offer - Our Products</h2>
         <p class="section-sub reveal delay-1">
-          Each service below is clearly listed with all products you requested, so customers can quickly understand what DigiNidi provides.
+          A complete portfolio of payment, banking, cash management, insurance, travel, and assisted digital services for retailers and entrepreneurs.
         </p>
 
         <div class="service-highlight reveal delay-2">
           <div>
-            <h3 style="font-size:1.35rem; margin-bottom:6px;">Complete One-Stop Financial Service Catalog</h3>
-            <p>From Aadhaar-based withdrawals to bill payments, PAN support, insurance, and loan services, everything is available in one place.</p>
+            <h3 style="font-size:1.35rem; margin-bottom:6px;">Structured 8-Service Fintech Catalog</h3>
+            <p>Built for rural and regional growth with secure transactions, operational support, and a wide set of essential services under one trusted brand.</p>
           </div>
           <div class="service-chip">8 Service Categories</div>
         </div>
@@ -618,7 +763,6 @@
               <li>Balance Enquiry</li>
               <li>Mini Statement</li>
               <li>Aadhaar Pay</li>
-              <li>Cash Deposit (some systems)</li>
             </ul>
             <div class="focus-note">Customers can withdraw money using Aadhaar number and fingerprint without ATM card.</div>
           </article>
@@ -629,9 +773,9 @@
               <div class="card-tag">Transfers</div>
             </div>
             <h3>Domestic Money Transfer (DMT)</h3>
-            <p class="card-note">Quick and secure remittance to bank accounts.</p>
+            <p class="card-note">Quick and secure remittance with instant bulk fund transfer support.</p>
             <ul>
-              <li>Send money to any bank account</li>
+              <li>Instant bulk fund transfer</li>
               <li>IMPS / NEFT transfer</li>
               <li>Instant transfer facility</li>
             </ul>
@@ -640,6 +784,34 @@
           <article class="service-card reveal delay-2">
             <div class="card-top">
               <div class="card-num">03</div>
+              <div class="card-tag">Bill Pay</div>
+            </div>
+            <h3>Banking and Financial Services</h3>
+            <p class="card-note">Expanded access to assisted banking and credit-linked financial products.</p>
+            <ul>
+              <li>Micro ATM</li>
+              <li>Credit links - PL / BL / OD</li>
+              <li>Credit card services</li>
+              <li>Gold loans</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal delay-3">
+            <div class="card-top">
+              <div class="card-num">04</div>
+              <div class="card-tag">Cash Flow</div>
+            </div>
+            <h3>Cash Management System (CMS)</h3>
+            <p class="card-note">Retailer-friendly collection and assisted payment services.</p>
+            <ul>
+              <li>Loan EMI payment services</li>
+              <li>All E.COM agents cash deposits</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="card-top">
+              <div class="card-num">05</div>
               <div class="card-tag">Bill Pay</div>
             </div>
             <h3>BBPS Bill Payment</h3>
@@ -652,34 +824,6 @@
               <li>Mobile recharge</li>
             </ul>
             <div class="focus-note">BBPS allows paying many types of bills from a single platform.</div>
-          </article>
-
-          <article class="service-card reveal delay-3">
-            <div class="card-top">
-              <div class="card-num">04</div>
-              <div class="card-tag">Recharge</div>
-            </div>
-            <h3>Recharge Services</h3>
-            <p class="card-note">Fast digital top-ups for communication services.</p>
-            <ul>
-              <li>Mobile recharge</li>
-              <li>DTH recharge</li>
-              <li>Data card recharge</li>
-            </ul>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="card-top">
-              <div class="card-num">05</div>
-              <div class="card-tag">PAN Support</div>
-            </div>
-            <h3>PAN Card Services</h3>
-            <p class="card-note">Assistance for new and updated PAN requests.</p>
-            <ul>
-              <li>New PAN Card apply</li>
-              <li>PAN correction</li>
-              <li>Instant PAN</li>
-            </ul>
           </article>
 
           <article class="service-card reveal delay-1">
@@ -702,29 +846,30 @@
               <div class="card-tag">Govt Services</div>
             </div>
             <h3>Government Services</h3>
-            <p class="card-note">Citizen-facing digital assistance under one counter.</p>
+            <p class="card-note">Essential assisted services for compliance, travel, and customer support needs.</p>
             <ul>
-              <li>Aadhaar update</li>
-              <li>Aadhaar download</li>
-              <li>Aadhaar bank linking status</li>
-              <li>e-Shram registration</li>
-              <li>PM-Kisan eKYC</li>
-              <li>Voter ID services</li>
+              <li>GST &amp; ITR filing</li>
+              <li>Train booking</li>
+              <li>LIC premium payment</li>
+              <li>KYC verification</li>
+              <li>Flight booking</li>
             </ul>
           </article>
 
           <article class="service-card reveal delay-3">
             <div class="card-top">
               <div class="card-num">08</div>
-              <div class="card-tag">Financial Access</div>
+              <div class="card-tag">Best Services</div>
             </div>
-            <h3>Banking and Financial Services</h3>
-            <p class="card-note">Expanded access to modern banking and investment tools.</p>
+            <h3>Other Best Services</h3>
+            <p class="card-note">Extra value-added services that improve collections, travel, and cross-border support.</p>
             <ul>
-              <li>Micro ATM</li>
-              <li>Credit card apply</li>
-              <li>Demat account opening</li>
-              <li>Loan services</li>
+              <li>Indo Nepal money transfer</li>
+              <li>POS devices</li>
+              <li>Fastags</li>
+              <li>QR payment collection</li>
+              <li>QR code with Soundbox</li>
+              <li>UPI fund transfer</li>
             </ul>
           </article>
         </div>
@@ -733,28 +878,27 @@
 
     <section id="partner">
       <div class="container">
-        <h2 class="section-title reveal">Partner With DigiNidi</h2>
+        <h2 class="section-title reveal">Join With Us</h2>
         <p class="section-sub reveal delay-1">
-          Join DigiNidi and start offering high-demand financial services at your shop with clear onboarding and support.
+          Become a Merchant: Join our growing fintech distribution network and build a profitable financial services business in your region.
         </p>
         <div class="contact-grid">
           <div class="panel reveal">
-            <h3>Why DigiNidi</h3>
+            <h3>Benefits</h3>
             <ul class="clear-list">
-              <li>Secure and reliable technology platform</li>
-              <li>Easy retailer onboarding process</li>
-              <li>High commission earning opportunities</li>
-              <li>Fast transaction processing</li>
-              <li>Dedicated Regional customer and partner support</li>
+              <li>Attractive Commission Structure</li>
+              <li>Training &amp; Onboarding Support</li>
+              <li>Dedicated Relationship Manager</li>
+              <li>Scalable Business Model</li>
             </ul>
           </div>
           <div class="panel reveal delay-1">
-            <h3>Partner Requirements</h3>
+            <h3>Why Choose Us</h3>
             <ul class="clear-list">
-              <li>Aadhaar Card and PAN Card</li>
-              <li>Active bank account for settlements</li>
-              <li>Basic smartphone/computer with internet</li>
-              <li>Shop or service point to serve customers</li>
+              <li>Secure and reliable technology platform</li>
+              <li>Easy retailer onboarding process</li>
+              <li>Dedicated regional customer and partner support</li>
+              <li>Fast transaction processing</li>
             </ul>
           </div>
         </div>
@@ -765,16 +909,12 @@
       <div class="container">
         <h2 class="section-title reveal">Compliance</h2>
         <p class="section-sub reveal delay-1">
-          DigiNidi follows clear operational and security standards to keep every customer transaction safe and traceable.
+          DigiNidi Services Pvt Ltd operates as a technology service provider.
         </p>
         <div class="panel reveal delay-2">
-          <h3>Compliance Points</h3>
-          <ul class="clear-list">
-            <li>Data Security: Customer and transaction data is handled with secure practices</li>
-            <li>Transaction Records: Every service transaction is logged for verification</li>
-            <li>Operational Controls: Service workflows are monitored to reduce errors</li>
-            <li>Support Escalation: Customers get clear support for failed or delayed transactions</li>
-          </ul>
+          <h3>Operational Compliance</h3>
+          <p>All banking and financial services are delivered in collaboration with RBI-regulated banks and financial institutions.</p>
+          <p>We maintain strict compliance standards, secure transaction protocols and data protection measures to ensure customer trust and operational integrity.</p>
         </div>
       </div>
     </section>
@@ -782,22 +922,22 @@
     <section id="contact">
       <div class="container contact-grid">
         <div class="panel reveal contact-list">
-          <h3>Contact DigiNidi</h3>
-          <p><strong>Company:</strong> DigiNidi</p>
+          <h3>Contact Us</h3>
+          <p><strong>Message:</strong> Use DigiNidi app &amp; take charge of all your transactions to grow your business.</p>
+          <p><strong>Company:</strong> DigiNidi Services Pvt Ltd</p>
           <p><strong>Phone:</strong> 8008008157, 8008008169</p>
           <p><strong>Email:</strong> info@diginidi.com</p>
-          <p><strong>Address:</strong> 9-6 First Floor, Foundry Road, Gollapudi</p>
-          <p><strong>Support Hours:</strong> Mon-Sat, 9:00 AM to 6:00 PM</p>
+          <p><strong>Registered Office:</strong> 19-6 First Floor, Foundry Road, Gollapudi, Vijayawada, Andhra Pradesh - 521225</p>
         </div>
         <div class="panel reveal delay-1">
-          <h3>Book a Demo</h3>
-          <p>Want to see DigiNidi services in action? Book a guided live demo with our team.</p>
+          <h3>Start With DigiNidi</h3>
+          <p>Use the DigiNidi app to manage essential transactions, serve more customers, and grow your regional service business with confidence.</p>
           <div class="demo-box">
-            <p><strong>Demo includes:</strong> AEPS, DMT, BBPS, Recharge, PAN, Insurance, and Government Services flow.</p>
-            <p><strong>For demo booking:</strong> Call or WhatsApp <strong>8008008157</strong> / <strong>8008008169</strong></p>
+            <p><strong>Available across:</strong> AEPS, DMT, CMS, BBPS, insurance, government services, and value-added merchant tools.</p>
+            <p><strong>Connect with us:</strong> Call or WhatsApp <strong>8008008157</strong> / <strong>8008008169</strong></p>
             <div class="demo-actions">
               <a class="btn btn-primary btn-small" href="tel:8008008157">Call Now</a>
-              <a class="btn btn-secondary btn-small" href="mailto:info@diginidi.com?subject=Book%20a%20DigiNidi%20Demo">Book via Email</a>
+              <a class="btn btn-secondary btn-small" href="mailto:info@diginidi.com?subject=Partner%20With%20DigiNidi">Email Us</a>
             </div>
           </div>
         </div>
