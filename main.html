@@ -74,12 +74,12 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 0;
       text-decoration: none;
       color: var(--ink);
       min-width: 0;
-      padding: 8px 14px 8px 8px;
-      border-radius: 22px;
+      padding: 10px 16px;
+      border-radius: 20px;
       background:
         linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 247, 255, 0.9));
       border: 1px solid rgba(179, 207, 255, 0.9);
@@ -88,46 +88,11 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.7);
     }
 
-    .brand-logo-shell {
-      position: relative;
-      padding: 6px 8px;
-      border-radius: 18px;
-      background:
-        linear-gradient(145deg, rgba(227, 240, 255, 0.95), rgba(255, 255, 255, 0.98));
-      border: 1px solid rgba(180, 212, 255, 0.92);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.82),
-        0 12px 28px rgba(6, 45, 121, 0.12);
-      flex-shrink: 0;
-    }
-
-    .brand-logo-shell::after {
-      content: "";
-      position: absolute;
-      inset: 4px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), transparent 58%);
-      pointer-events: none;
-    }
-
-    .brand-logo {
-      width: clamp(176px, 20vw, 250px);
-      height: auto;
-      max-height: 78px;
-      object-fit: contain;
-      object-position: center;
-      display: block;
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 10px 18px rgba(10, 87, 212, 0.18));
-    }
-
     .brand-copy {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
       min-width: 0;
-      padding-right: 4px;
     }
 
     .brand-title {
@@ -152,6 +117,38 @@
       letter-spacing: 0.14em;
       line-height: 1.2;
       text-transform: uppercase;
+    }
+
+    .hero-brand-mark {
+      position: relative;
+      margin-bottom: 4px;
+      padding: 12px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #b8d8e9, #a9d0e5);
+      border: 1px solid #8bb7d4;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        0 14px 30px rgba(33, 91, 143, 0.12);
+    }
+
+    .hero-brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 45%);
+      pointer-events: none;
+    }
+
+    .hero-brand-logo {
+      display: block;
+      width: min(100%, 390px);
+      margin: 0 auto;
+      height: auto;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 10px 18px rgba(10, 87, 212, 0.1));
     }
 
     .nav-links {
@@ -262,11 +259,11 @@
     }
 
     .hero-panel {
-      background: linear-gradient(155deg, #ffffff 0%, #eff6ff 100%);
-      border: 1px solid #d6e5ff;
+      background: linear-gradient(160deg, #dff1fb 0%, #cbe5f5 52%, #d9ecfa 100%);
+      border: 1px solid #b9d7ee;
       border-radius: var(--radius);
       padding: 22px;
-      box-shadow: var(--shadow-soft);
+      box-shadow: 0 18px 38px rgba(50, 103, 156, 0.14);
       position: relative;
       overflow: hidden;
     }
@@ -274,33 +271,12 @@
     .hero-panel::after {
       content: "";
       position: absolute;
-      width: 190px;
-      height: 190px;
-      right: -60px;
-      top: -60px;
+      width: 220px;
+      height: 220px;
+      right: -70px;
+      top: -70px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(10, 87, 212, 0.2), transparent 68%);
-    }
-
-    .hero-panel h3 {
-      margin-bottom: 12px;
-      font-size: 1.1rem;
-    }
-
-    .quick-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .quick-item {
-      background: #fff;
-      border: 1px solid #dce8ff;
-      border-radius: 12px;
-      padding: 10px;
-      font-size: 0.9rem;
-      color: var(--muted);
-      font-weight: 600;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.34), transparent 68%);
     }
 
     section {
@@ -606,19 +582,8 @@
       }
 
       .brand {
-        gap: 12px;
-        padding: 8px 10px 8px 8px;
+        padding: 8px 12px;
         border-radius: 20px;
-      }
-
-      .brand-logo-shell {
-        padding: 6px 8px;
-        border-radius: 16px;
-      }
-
-      .brand-logo {
-        width: clamp(148px, 36vw, 190px);
-        max-height: 62px;
       }
 
       .brand-title {
@@ -637,23 +602,13 @@
       }
 
       .brand {
-        gap: 10px;
-        padding: 8px 10px 8px 8px;
+        padding: 8px 10px;
         max-width: calc(100% - 56px);
       }
 
       .brand-copy {
         display: flex;
         gap: 2px;
-      }
-
-      .brand-logo-shell {
-        padding: 5px 7px;
-      }
-
-      .brand-logo {
-        width: clamp(112px, 30vw, 132px);
-        max-height: 46px;
       }
 
       .brand-title {
@@ -672,9 +627,6 @@
   <header class="header">
     <div class="container nav">
       <a class="brand" href="#home" aria-label="DigiNidi Home">
-        <div class="brand-logo-shell">
-          <img class="brand-logo" src="latest_logo.png" alt="DigiNidi logo" />
-        </div>
         <div class="brand-copy">
           <div class="brand-title">DigiNidi <span class="services-word">Services</span></div>
           <div class="brand-subtitle">Private Limited</div>
@@ -709,14 +661,8 @@
         </div>
 
         <aside class="hero-panel reveal delay-1">
-          <h3>Core Service Highlights</h3>
-          <div class="quick-grid">
-            <div class="quick-item">AEPS Cash Withdrawal</div>
-            <div class="quick-item">Domestic Money Transfer</div>
-            <div class="quick-item">BBPS Bill Payment</div>
-            <div class="quick-item">Cash Management System</div>
-            <div class="quick-item">Insurance Services</div>
-            <div class="quick-item">Government Services</div>
+          <div class="hero-brand-mark">
+            <img class="hero-brand-logo" src="latest_logo.png" alt="DigiNidi logo" />
           </div>
         </aside>
       </div>
