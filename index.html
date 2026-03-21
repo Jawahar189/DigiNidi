@@ -1,1 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DigiNidi Services Pvt Ltd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --surface: #ffffff;
+      --ink: #0e1a34;
+      --muted: #52607c;
+      --brand-1: #0a57d4;
+      --brand-2: #00a8cc;
+      --brand-3: #04266e;
+      --gold: #ffcc56;
+      --ring: #dce8ff;
+      --radius: 18px;
+      --shadow-soft: 0 18px 38px rgba(14, 26, 52, 0.1);
+      --shadow-strong: 0 24px 50px rgba(10, 87, 212, 0.2);
+    }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Keeps anchored sections visible below sticky header */
+    section[id] {
+      scroll-margin-top: 96px;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 7% -10%, #dbe9ff 0%, transparent 40%),
+        radial-gradient(circle at 90% 0%, #d3fbff 0%, transparent 32%),
+        var(--bg);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(1140px, 92%);
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.82);
+      border-bottom: 1px solid rgba(14, 26, 52, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      text-decoration: none;
+      color: var(--ink);
+      min-width: 0;
+      padding: 10px 16px;
+      border-radius: 20px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 247, 255, 0.9));
+      border: 1px solid rgba(179, 207, 255, 0.9);
+      box-shadow:
+        0 18px 34px rgba(10, 49, 122, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-family: "Outfit", sans-serif;
+      font-size: clamp(1.2rem, 1.9vw, 1.72rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      line-height: 1.02;
+      color: #0a4fc7;
+      text-shadow: 0 8px 24px rgba(10, 87, 212, 0.08);
+    }
+
+    .brand-title .services-word {
+      color: #d79a12;
+      text-shadow: 0 8px 20px rgba(215, 154, 18, 0.2);
+    }
+
+    .brand-subtitle {
+      font-size: 0.77rem;
+      font-weight: 700;
+      color: #5a6c88;
+      letter-spacing: 0.14em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .hero-brand-mark {
+      position: relative;
+      margin-bottom: 4px;
+      padding: 12px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #b8d8e9, #a9d0e5);
+      border: 1px solid #8bb7d4;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        0 14px 30px rgba(33, 91, 143, 0.12);
+    }
+
+    .hero-brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 45%);
+      pointer-events: none;
+    }
+
+    .hero-brand-logo {
+      display: block;
+      width: min(100%, 390px);
+      margin: 0 auto;
+      height: auto;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 10px 18px rgba(10, 87, 212, 0.1));
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--brand-1);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 70px 0 52px;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #e8f1ff;
+      border: 1px solid #c8dcff;
+      color: var(--brand-3);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Outfit", sans-serif;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.15rem, 4.2vw, 3.65rem);
+      margin-bottom: 14px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 62ch;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 11px 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(130deg, var(--brand-1), var(--brand-3));
+      color: #fff;
+      box-shadow: var(--shadow-strong);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      border: 1px solid #bdd6ff;
+      color: var(--brand-3);
+    }
+
+    .hero-panel {
+      background: linear-gradient(160deg, #dff1fb 0%, #cbe5f5 52%, #d9ecfa 100%);
+      border: 1px solid #b9d7ee;
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 18px 38px rgba(50, 103, 156, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -70px;
+      top: -70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.34), transparent 68%);
+    }
+
+    section {
+      padding: 52px 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3vw, 2.45rem);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0 auto 24px;
+    }
+
+    .service-highlight {
+      background: linear-gradient(130deg, #06245f, #0a57d4 55%, #0ebfd8);
+      color: #f2f8ff;
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-strong);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .service-highlight p {
+      opacity: 0.95;
+    }
+
+    .service-chip {
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--ring);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      padding: 20px;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 42px rgba(12, 42, 92, 0.14);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .card-num {
+      min-width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+      color: #fff;
+      font-family: "Outfit", sans-serif;
+      font-weight: 800;
+      font-size: 1.02rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(10, 87, 212, 0.28);
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #0b3f96;
+      background: #e9f3ff;
+      border: 1px solid #cde1ff;
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+
+    .service-card h3 {
+      font-size: 1.16rem;
+      margin-bottom: 5px;
+    }
+
+    .card-note {
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-size: 0.93rem;
+    }
+
+    .service-card ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .service-card li {
+      position: relative;
+      padding-left: 25px;
+      color: #394e74;
+      font-weight: 500;
+    }
+
+    .service-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #8fd3ff, #0b5dd2);
+      box-shadow: 0 0 0 2px rgba(16, 121, 244, 0.18);
+    }
+
+    .focus-note {
+      margin-top: 14px;
+      border: 1px solid #ffe3a0;
+      background: linear-gradient(180deg, #fff8e6, #fffef7);
+      color: #665020;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--ring);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      padding: 22px;
+    }
+
+    .panel h3 {
+      font-size: 1.24rem;
+      margin-bottom: 10px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .split-head {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-items: baseline;
+    }
+
+    .split-head span {
+      color: var(--brand-1);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+    }
+
+    .clear-list {
+      list-style: none;
+      margin-top: 10px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .clear-list li {
+      padding: 9px 12px;
+      background: #f6f9ff;
+      border: 1px solid #d9e7ff;
+      border-radius: 10px;
+      color: #2f4772;
+      font-weight: 500;
+    }
+
+    .contact-list p {
+      margin-bottom: 10px;
+    }
+
+    .contact-list strong {
+      color: var(--ink);
+    }
+
+    .demo-box {
+      border: 1px solid #cfe2ff;
+      background: linear-gradient(180deg, #f9fbff, #eef5ff);
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 12px;
+    }
+
+    .demo-box p {
+      margin-bottom: 10px;
+    }
+
+    .demo-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn-small {
+      padding: 9px 14px;
+      font-size: 0.9rem;
+      border-radius: 10px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      border-top: 1px solid rgba(14, 26, 52, 0.1);
+      color: var(--muted);
+      text-align: center;
+      padding: 24px 0 36px;
+      font-size: 0.95rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: reveal 0.6s ease forwards;
+    }
+
+    .reveal.delay-1 { animation-delay: 0.08s; }
+    .reveal.delay-2 { animation-delay: 0.16s; }
+    .reveal.delay-3 { animation-delay: 0.24s; }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-wrap,
+      .services-grid,
+      .contact-grid,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-highlight {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 78px;
+        left: 4%;
+        right: 4%;
+        background: #fff;
+        border: 1px solid var(--ring);
+        border-radius: 12px;
+        box-shadow: var(--shadow-soft);
+        padding: 12px;
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .brand {
+        padding: 8px 12px;
+        border-radius: 20px;
+      }
+
+      .brand-title {
+        font-size: 1.08rem;
+      }
+
+      .brand-subtitle {
+        font-size: 0.68rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        min-height: 72px;
+        gap: 12px;
+      }
+
+      .brand {
+        padding: 8px 10px;
+        max-width: calc(100% - 56px);
+      }
+
+      .brand-copy {
+        display: flex;
+        gap: 2px;
+      }
+
+      .brand-title {
+        font-size: 0.92rem;
+        line-height: 1;
+      }
+
+      .brand-subtitle {
+        font-size: 0.54rem;
+        letter-spacing: 0.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="DigiNidi Home">
+        <div class="brand-copy">
+          <div class="brand-title">DigiNidi <span class="services-word">Services</span></div>
+          <div class="brand-subtitle">Private Limited</div>
+        </div>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#partner">Join With Us</a></li>
+        <li><a href="#compliance">Compliance</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-wrap">
+        <div class="reveal">
+          <div class="hero-tag">Digital Payment and Banking Services</div>
+          <h1>Your Trusted Partner for Digital Payment and Banking Services</h1>
+          <p class="lead">
+            DigiNidi empowers retailers and entrepreneurs to offer essential digital financial services such as AEPS cash withdrawal, domestic money transfer, bill payments, and mobile recharge through a secure and reliable platform.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#partner">Become a Retailer</a>
+            <a class="btn btn-secondary" href="#services">Explore Services</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel reveal delay-1">
+          <div class="hero-brand-mark">
+            <img class="hero-brand-logo" src="latest_logo.png" alt="DigiNidi logo" />
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title reveal">About Us</h2>
+        <p class="section-sub reveal delay-1">
+          DigiNidi Services Pvt Ltd is a next-generation fintech ecosystem company focused on delivering integrated financial services to underserved and rural markets.
+        </p>
+        <p class="section-sub reveal delay-2">
+          We operate through a structured franchise model, enabling retailers and entrepreneurs to offer secure financial services under a trusted brand.
+        </p>
+        <div class="info-grid">
+          <div class="panel reveal">
+            <div class="split-head">
+              <span>Our Vision</span>
+            </div>
+            <p>To become a leading regional fintech infrastructure network connecting millions to digital financial access.</p>
+          </div>
+          <div class="panel reveal delay-1">
+            <div class="split-head">
+              <span>Our Mission</span>
+            </div>
+            <ul class="clear-list">
+              <li>Expand rural banking access</li>
+              <li>Promote digital financial inclusion</li>
+              <li>Enable entrepreneurship through fintech distribution</li>
+              <li>Provide secure and compliant transaction systems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title reveal">What We Offer - Our Products</h2>
+        <p class="section-sub reveal delay-1">
+          A complete portfolio of payment, banking, cash management, insurance, travel, and assisted digital services for retailers and entrepreneurs.
+        </p>
+
+        <div class="service-highlight reveal delay-2">
+          <div>
+            <h3 style="font-size:1.35rem; margin-bottom:6px;">Structured 8-Service Fintech Catalog</h3>
+            <p>Built for rural and regional growth with secure transactions, operational support, and a wide set of essential services under one trusted brand.</p>
+          </div>
+          <div class="service-chip">8 Service Categories</div>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="card-top">
+              <div class="card-num">01</div>
+              <div class="card-tag">Core Banking</div>
+            </div>
+            <h3>AEPS (Aadhaar Enabled Payment System)</h3>
+            <p class="card-note">Biometric Aadhaar-based assisted banking services.</p>
+            <ul>
+              <li>Cash Withdrawal</li>
+              <li>Balance Enquiry</li>
+              <li>Mini Statement</li>
+              <li>Aadhaar Pay</li>
+            </ul>
+            <div class="focus-note">Customers can withdraw money using Aadhaar number and fingerprint without ATM card.</div>
+          </article>
+
+          <article class="service-card reveal delay-1">
+            <div class="card-top">
+              <div class="card-num">02</div>
+              <div class="card-tag">Transfers</div>
+            </div>
+            <h3>Domestic Money Transfer (DMT)</h3>
+            <p class="card-note">Quick and secure remittance with instant bulk fund transfer support.</p>
+            <ul>
+              <li>Instant bulk fund transfer</li>
+              <li>IMPS / NEFT transfer</li>
+              <li>Instant transfer facility</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal delay-2">
+            <div class="card-top">
+              <div class="card-num">03</div>
+              <div class="card-tag">Bill Pay</div>
+            </div>
+            <h3>Banking and Financial Services</h3>
+            <p class="card-note">Expanded access to assisted banking and credit-linked financial products.</p>
+            <ul>
+              <li>Micro ATM</li>
+              <li>Credit links - PL / BL / OD</li>
+              <li>Credit card services</li>
+              <li>Gold loans</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal delay-3">
+            <div class="card-top">
+              <div class="card-num">04</div>
+              <div class="card-tag">Cash Flow</div>
+            </div>
+            <h3>Cash Management System (CMS)</h3>
+            <p class="card-note">Retailer-friendly collection and assisted payment services.</p>
+            <ul>
+              <li>Loan EMI payment services</li>
+              <li>All E.COM agents cash deposits</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="card-top">
+              <div class="card-num">05</div>
+              <div class="card-tag">Bill Pay</div>
+            </div>
+            <h3>BBPS Bill Payment</h3>
+            <p class="card-note">Unified bill settlement through one trusted platform.</p>
+            <ul>
+              <li>Electricity bill</li>
+              <li>Water bill</li>
+              <li>Gas bill</li>
+              <li>DTH recharge</li>
+              <li>Mobile recharge</li>
+            </ul>
+            <div class="focus-note">BBPS allows paying many types of bills from a single platform.</div>
+          </article>
+
+          <article class="service-card reveal delay-1">
+            <div class="card-top">
+              <div class="card-num">06</div>
+              <div class="card-tag">Protection</div>
+            </div>
+            <h3>Insurance Services</h3>
+            <p class="card-note">Coverage options for key life and asset needs.</p>
+            <ul>
+              <li>Life insurance</li>
+              <li>Motor insurance</li>
+              <li>Health insurance</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal delay-2">
+            <div class="card-top">
+              <div class="card-num">07</div>
+              <div class="card-tag">Govt Services</div>
+            </div>
+            <h3>Government Services</h3>
+            <p class="card-note">Essential assisted services for compliance, travel, and customer support needs.</p>
+            <ul>
+              <li>GST &amp; ITR filing</li>
+              <li>Train booking</li>
+              <li>LIC premium payment</li>
+              <li>KYC verification</li>
+              <li>Flight booking</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal delay-3">
+            <div class="card-top">
+              <div class="card-num">08</div>
+              <div class="card-tag">Best Services</div>
+            </div>
+            <h3>Other Best Services</h3>
+            <p class="card-note">Extra value-added services that improve collections, travel, and cross-border support.</p>
+            <ul>
+              <li>Indo Nepal money transfer</li>
+              <li>POS devices</li>
+              <li>Fastags</li>
+              <li>QR payment collection</li>
+              <li>QR code with Soundbox</li>
+              <li>UPI fund transfer</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="partner">
+      <div class="container">
+        <h2 class="section-title reveal">Join With Us</h2>
+        <p class="section-sub reveal delay-1">
+          Become a Merchant: Join our growing fintech distribution network and build a profitable financial services business in your region.
+        </p>
+        <div class="contact-grid">
+          <div class="panel reveal">
+            <h3>Benefits</h3>
+            <ul class="clear-list">
+              <li>Attractive Commission Structure</li>
+              <li>Training &amp; Onboarding Support</li>
+              <li>Dedicated Relationship Manager</li>
+              <li>Scalable Business Model</li>
+            </ul>
+          </div>
+          <div class="panel reveal delay-1">
+            <h3>Why Choose Us</h3>
+            <ul class="clear-list">
+              <li>Secure and reliable technology platform</li>
+              <li>Easy retailer onboarding process</li>
+              <li>Dedicated regional customer and partner support</li>
+              <li>Fast transaction processing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="compliance">
+      <div class="container">
+        <h2 class="section-title reveal">Compliance</h2>
+        <p class="section-sub reveal delay-1">
+          DigiNidi Services Pvt Ltd operates as a technology service provider.
+        </p>
+        <div class="panel reveal delay-2">
+          <h3>Operational Compliance</h3>
+          <p>All banking and financial services are delivered in collaboration with RBI-regulated banks and financial institutions.</p>
+          <p>We maintain strict compliance standards, secure transaction protocols and data protection measures to ensure customer trust and operational integrity.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid">
+        <div class="panel reveal contact-list">
+          <h3>Contact Us</h3>
+          <p><strong>Message:</strong> Use DigiNidi app &amp; take charge of all your transactions to grow your business.</p>
+          <p><strong>Company:</strong> DigiNidi Services Pvt Ltd</p>
+          <p><strong>Phone:</strong> 8008008157, 8008008169</p>
+          <p><strong>Email:</strong> info@diginidi.com</p>
+          <p><strong>Registered Office:</strong> 19-6 First Floor, Foundry Road, Gollapudi, Vijayawada, Andhra Pradesh - 521225</p>
+        </div>
+        <div class="panel reveal delay-1">
+          <h3>Start With DigiNidi</h3>
+          <p>Use the DigiNidi app to manage essential transactions, serve more customers, and grow your regional service business with confidence.</p>
+          <div class="demo-box">
+            <p><strong>Available across:</strong> AEPS, DMT, CMS, BBPS, insurance, government services, and value-added merchant tools.</p>
+            <p><strong>Connect with us:</strong> Call or WhatsApp <strong>8008008157</strong> / <strong>8008008169</strong></p>
+            <div class="demo-actions">
+              <a class="btn btn-primary btn-small" href="tel:8008008157">Call Now</a>
+              <a class="btn btn-secondary btn-small" href="mailto:info@diginidi.com?subject=Partner%20With%20DigiNidi">Email Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Copyright 2026 DigiNidi. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+    });
+  </script>
+</body>
+</html>
